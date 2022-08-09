@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TMDB-Movie-Search/static/css/main.0dc3498c.css",
+    "main.js": "/TMDB-Movie-Search/static/js/main.6e07a5e1.js",
+    "static/js/787.744b9674.chunk.js": "/TMDB-Movie-Search/static/js/787.744b9674.chunk.js",
+    "index.html": "/TMDB-Movie-Search/index.html",
+    "main.0dc3498c.css.map": "/TMDB-Movie-Search/static/css/main.0dc3498c.css.map",
+    "main.6e07a5e1.js.map": "/TMDB-Movie-Search/static/js/main.6e07a5e1.js.map",
+    "787.744b9674.chunk.js.map": "/TMDB-Movie-Search/static/js/787.744b9674.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0dc3498c.css",
+    "static/js/main.6e07a5e1.js"
+  ]
+}
