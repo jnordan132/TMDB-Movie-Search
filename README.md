@@ -25,7 +25,7 @@ The following necessary dependencies must be installed to run the application pr
 
 # Usage
 
-In order to use this app, First clone the repo, Then run "npm i" from the root of the project, and lastly run npm start
+In order to use this app, First clone this repo, Then from the root of the project run "npm i", lastly run "npm start"
 
 # Contributions
 
