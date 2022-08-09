@@ -1,8 +1,8 @@
 /* MAIN */
 :root {
-  --mainCol: rgb(88, 12, 12);
-  --secCol: rgb(255, 255, 255);
-  --thirdCol: rgb(49, 49, 49);
+  --mainCol: rgb(153, 186, 221);
+  --secCol: rgb(0, 0, 0);
+  --thirdCol: #414f5e;
 }
 
 body {
@@ -12,6 +12,7 @@ body {
   text-decoration: none;
   list-style-type: none;
   outline: none;
+  font-family: "Play", sans-serif;
 }
 
 h2 {
@@ -27,23 +28,22 @@ h2 {
 }
 
 .button:hover {
-  background-color: rgb(136, 18, 18);
+  background-color: var(--thirdCol);
   transition: 1s;
 }
 
 /* HEADER */
 .header {
   width: 100%;
-  background-color: var(--mainCol);
   text-align: center;
 }
 
 .header h1 {
-  padding: 0.5rem;
+  padding: 0.75rem;
 }
 
 .header h1 a {
-  color: var(--secCol);
+  color: var(--mainCol);
   text-decoration: none;
 }
 
@@ -88,7 +88,7 @@ h2 {
 }
 
 .beforeCard {
-  background-color: rgb(218, 218, 218);
+  background-color: rgb(255, 255, 255);
   box-shadow: 0px 5px 20px 0px var(--thirdCol);
   border-radius: 0.4em;
 }
@@ -96,7 +96,7 @@ h2 {
 /* FOOTER */
 .footer {
   margin: 0;
-  color: var(--secCol);
+  color: white;
   text-align: center;
   padding-bottom: 20px;
 }
@@ -104,4 +104,31 @@ h2 {
 .footer h6 a {
   color: var(--mainCol);
   text-decoration: none;
+}
+
+@media (max-width: 915px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.75rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.75rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 0.75rem;
+  }
+  .searchBar {
+    width: 300px;
+  }
 }

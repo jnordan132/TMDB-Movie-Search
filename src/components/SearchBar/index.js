@@ -37,7 +37,7 @@ function SearchBar() {
   };
   return (
     <>
-      <Navbar expand="lg" variant="dark">
+      <Navbar variant="dark">
         <Container fluid>
           <Navbar.Collapse id="navbarScroll">
             <Form
