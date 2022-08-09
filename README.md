@@ -17,10 +17,9 @@
 This web application was created using create-react-app, MovieWiki takes advantage of the TMDB API to pull data from popular as well as not so popular movies, to give a user the ability to quickly search and read descriptions, release dates, and even IMDb ratings on movies of interest. This application is solely frontend based to specifically showcase the abilities given through the TMDB API.
 
 # Demonstration
-
-![MovieWikiMain](https://user-images.githubusercontent.com/81433664/183774326-e81181ea-e580-4c51-a41c-d89913f02433.png)
-![MovieWikiSearch](https://user-images.githubusercontent.com/81433664/183774329-a1c60fdc-3d21-491a-8b0b-c72f875347cb.png)
-![MovieWikiModal](https://user-images.githubusercontent.com/81433664/183774332-963b1f80-ce86-48a5-802c-2aa88e8bddf3.png)
+![MovieWikiMain](https://user-images.githubusercontent.com/81433664/183777837-726f2436-b775-4e08-b706-6408072dcfd4.png)
+![MovieWikiSearch](https://user-images.githubusercontent.com/81433664/183777844-0619c277-9eb0-48d8-a892-23df7e1cb7dd.png)
+![MovieWikiModal](https://user-images.githubusercontent.com/81433664/183777846-1106ff75-0f6b-418d-9ed6-07396f89ee26.png)
 
 # Installation
 
