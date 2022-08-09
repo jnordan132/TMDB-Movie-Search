@@ -16,9 +16,7 @@ This web application was created using create-react-app, MovieWiki takes advanta
 
 - [Installation](#installation)
 - [Usage](#usage)
-
 - [Contributing](#contributing)
-- [Tests](#tests)
 - [Questions](#questions)
 
 # Installation
@@ -31,11 +29,7 @@ In order to use this app, First clone the repo, Then run "npm i" from the root o
 
 # Contributions
 
-​Contributors: Jacob Nordan
-
-# Tests
-
-The following is needed to run tests:
+Contributors: Jacob Nordan
 
 # Questions
 
