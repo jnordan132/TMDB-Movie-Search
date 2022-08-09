@@ -1,6 +1,7 @@
 # TMDB-Movie-Search
 
-https://github.com/jnordan132/TMDB-Movie-Search
+[Gituhb Repository](https://github.com/jnordan132/TMDB-Movie-Search)
+[Live Url](https://jnordan132.github.io/TMDB-Movie-Search/)
 
 # Table of Contents
 
