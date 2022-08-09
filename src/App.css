@@ -136,9 +136,9 @@ h2 {
     width: 300px;
   }
   .modalCard {
-    margin: 0;
+    margin: 0.5rem;
   }
   .movieModal img {
-    width: 45%;
+    width: 50%;
   }
 }
