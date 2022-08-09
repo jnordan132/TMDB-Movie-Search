@@ -63,6 +63,10 @@ h2 {
   background-color: var(--thirdCol);
 }
 
+.modalCard {
+  margin-top: 3rem;
+}
+
 .movieModal img {
   width: 60%;
 }
