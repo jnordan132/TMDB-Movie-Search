@@ -135,4 +135,10 @@ h2 {
   .searchBar {
     width: 300px;
   }
+  .modalCard {
+    margin: 0;
+  }
+  .movieModal img {
+    width: 45%;
+  }
 }
