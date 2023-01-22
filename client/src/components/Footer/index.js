@@ -6,6 +6,7 @@ function Footer() {
           MovieWiki Was Created Using The{" "}
           <a
             target="_blank"
+            rel="noreferrer"
             href="http://https://www.themoviedb.org/documentation/api"
           >
             TMDB API
