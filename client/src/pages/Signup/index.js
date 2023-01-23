@@ -51,7 +51,8 @@ const Signup = () => {
   };
 
   return (
-    <>
+    <section className="form">
+      <h1>Signup</h1>
       {/* This is needed for the validation functionality above */}
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         {/* show alert if server response is bad */}
@@ -109,6 +110,7 @@ const Signup = () => {
           </Form.Control.Feedback>
         </Form.Group>
         <Button
+          className="blue"
           disabled={
             !(
               userFormData.username &&
@@ -121,8 +123,11 @@ const Signup = () => {
         >
           Submit
         </Button>
+        <p>
+          Already have an account? <a href="/login">Login</a>
+        </p>
       </Form>
-    </>
+    </section>
   );
 };
 

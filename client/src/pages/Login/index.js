@@ -48,7 +48,8 @@ const LoginForm = () => {
   };
 
   return (
-    <>
+    <section className="form">
+      <h1>Login</h1>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Alert
           dismissible
@@ -88,14 +89,18 @@ const LoginForm = () => {
           </Form.Control.Feedback>
         </Form.Group>
         <Button
+          className="blue"
           disabled={!(userFormData.email && userFormData.password)}
           type="submit"
           variant="success"
         >
           Submit
         </Button>
+        <p>
+          Dont have an account? <a href="/signup">Signup</a>
+        </p>
       </Form>
-    </>
+    </section>
   );
 };
 

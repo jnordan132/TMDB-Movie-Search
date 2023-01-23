@@ -77,6 +77,41 @@ nav ul li a {
   margin-bottom: 0.75rem;
 }
 
+/* SIGNUP/LOGIN */
+
+.form {
+  width: 25%;
+  margin: 0 auto 0 auto;
+  color: var(--thirdCol);
+  background-color: white;
+  border: 2px solid var(--mainCol);
+  border-radius: 3%;
+  padding: 3rem;
+}
+
+.form h1 {
+  color: var(--thirdCol);
+  text-align: center;
+}
+
+.form p {
+  text-align: center;
+  margin-top: 15px;
+  color: var(--thirdCol);
+}
+
+.form p a {
+  color: var(--mainCol);
+  text-decoration: none;
+}
+
+.form .blue {
+  background-color: var(--thirdCol);
+  color: var(--mainCol);
+  border: 1px solid var(--mainCol);
+  margin-top: 20px;
+}
+
 /* MOVIE STUFF */
 .container {
   width: 100%;
