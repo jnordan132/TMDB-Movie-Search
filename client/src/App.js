@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Footer from "./components/Footer";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
@@ -19,6 +20,7 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route render={() => <h1 className="display-2">Wrong page!</h1>} />
           </Switch>
