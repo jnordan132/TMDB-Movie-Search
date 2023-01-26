@@ -21,33 +21,29 @@ const MovieContent = ({
       <div className="card text-center mb-3 beforeCard">
         <div className="card-body">
           <img
+            onClick={handleShow}
             className="card-img-top"
             src={"https://image.tmdb.org/t/p/w500/" + poster_path}
           />
-          <div className="card-body">
-            <button type="button" className="button" onClick={handleShow}>
-              View More
-            </button>
-            <Modal className="modalCard" show={show} onHide={handleClose}>
-              <Modal.Header closeButton>
-                <h6>Release Date: {release_date}</h6>
-              </Modal.Header>
-              <Modal.Body>
-                <div className="movieModal">
-                  <img
-                    className="card"
-                    src={"https://image.tmdb.org/t/p/w500/" + poster_path}
-                  />
-                  <h3>{title}</h3>
+          <Modal className="modalCard" show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <h6>Release Date: {release_date}</h6>
+            </Modal.Header>
+            <Modal.Body>
+              <div className="movieModal">
+                <img
+                  className="card"
+                  src={"https://image.tmdb.org/t/p/w500/" + poster_path}
+                />
+                <h3>{title}</h3>
 
-                  <br />
-                  <p>{overview}</p>
-                  <br />
-                  <h6>IMDb Rating: {vote_average} / 10</h6>
-                </div>
-              </Modal.Body>
-            </Modal>
-          </div>
+                <br />
+                <p>{overview}</p>
+                <br />
+                <h6>IMDb Rating: {vote_average} / 10</h6>
+              </div>
+            </Modal.Body>
+          </Modal>
         </div>
       </div>
     );

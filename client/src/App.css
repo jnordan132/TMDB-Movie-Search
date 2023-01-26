@@ -19,6 +19,21 @@ h2 {
   color: var(--secCol);
 }
 
+.card-img-top {
+  cursor: pointer;
+  transition: transform 0.3s;
+  border-radius: 0.4em;
+}
+
+.card-img-top:hover {
+  transform: scale(1.02);
+}
+
+.display-2 {
+  text-align: center;
+  margin-top: 10rem;
+}
+
 .button {
   color: var(--secCol);
   background-color: var(--mainCol);
@@ -36,7 +51,8 @@ h2 {
 .header {
   width: 100%;
   margin: 0;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .header h1 {
@@ -52,7 +68,7 @@ h2 {
 
 nav ul {
   display: flex;
-  justify-content: center;
+  margin-left: 550%;
   padding: 0;
 }
 
@@ -63,9 +79,14 @@ nav ul li {
   padding-top: 1.1rem;
 }
 
-nav ul li a {
+nav ul li a,
+.navbar {
   text-decoration: none;
   color: rgb(153, 186, 221);
+}
+
+a {
+  cursor: pointer;
 }
 
 /* SEARCH BAR */
