@@ -29,41 +29,39 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    // addMovie: async (
-    //     parent,
-    //     { userId, authors, description, movieId, image, link, title }
-    // ) => {
-    //     const movie = {
-    //         authors,
-    //         description,
-    //         movieId,
-    //         image,
-    //         link,
-    //         title,
-    //     };
-    //     console.log(movie);
+    addMovie: async (
+      parent,
+      { userId, description, movieId, image, link, title }
+    ) => {
+      const movie = {
+        description,
+        movieId,
+        image,
+        title,
+      };
+      console.log(movie);
 
-    //     return User.findOneAndUpdate(
-    //         { _id: userId },
-    //         {
-    //             $addToSet: { savedMovies: movie },
-    //         },
-    //         {
-    //             new: true,
-    //             runValidators: true,
-    //         }
-    //     );
-    // },
+      return User.findOneAndUpdate(
+        { _id: userId },
+        {
+          $addToSet: { savedMovies: movie },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
     removeUser: async (parent, { userId }) => {
       return User.findOneAndDelete({ _id: userId });
     },
-    // removeMovie: async (parent, { userId, bookId }) => {
-    //   return User.findOneAndUpdate(
-    //     { _id: userId },
-    //     { $pull: { savedBooks: { bookId: bookId } } },
-    //     { new: true }
-    //   );
-    // },
+    removeMovie: async (parent, { userId, bookId }) => {
+      return User.findOneAndUpdate(
+        { _id: userId },
+        { $pull: { savedBooks: { bookId: bookId } } },
+        { new: true }
+      );
+    },
   },
 };
 

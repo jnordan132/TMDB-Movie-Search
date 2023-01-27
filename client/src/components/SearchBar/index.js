@@ -71,7 +71,7 @@ function SearchBar() {
             </div>
           </div>
         ) : (
-          <h2>Sorry! No Movies Found for Your Search!</h2>
+          <h2 className="display-2">Sorry! No Movies Found for Your Search!</h2>
         )}
       </div>
     </>

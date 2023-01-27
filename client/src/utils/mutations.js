@@ -24,39 +24,33 @@ export const USER_LOGIN = gql`
   }
 `;
 
-// export const ADD_BOOK = gql`
-//     mutation addBook(
-//         $userId: ID!
-//         $authors: [String]!
-//         $description: String!
-//         $bookId: String!
-//         $image: String!
-//         $link: String!
-//         $title: String!
-//     ) {
-//         addBook(
-//             userId: $userId
-//             authors: $authors
-//             description: $description
-//             bookId: $bookId
-//             image: $image
-//             link: $link
-//             title: $title
-//         ) {
-//             _id
-//             username
-//             email
-//             savedBooks {
-//                 authors
-//                 description
-//                 image
-//                 link
-//                 title
-//                 bookId
-//             }
-//         }
-//     }
-// `;
+export const ADD_MOVIE = gql`
+  mutation addMovie(
+    $userId: ID!
+    $description: String!
+    $movieId: String!
+    $image: String!
+    $title: String!
+  ) {
+    addMovie(
+      userId: $userId
+      description: $description
+      movieId: $movieId
+      image: $image
+      title: $title
+    ) {
+      _id
+      username
+      email
+      savedMovies {
+        description
+        image
+        title
+        movieId
+      }
+    }
+  }
+`;
 
 // export const REMOVE_BOOK = gql`
 //     mutation removeBook($userId: String!, $bookId: String!) {

@@ -9,6 +9,9 @@ function Header() {
       <nav className="navbar">
         {Auth.loggedIn() ? (
           <ul>
+            <li>
+              <a href="/saved">Saved Movies</a>
+            </li>
             <li onClick={Auth.logout}>
               <a>Logout</a>
             </li>
