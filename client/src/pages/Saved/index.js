@@ -68,19 +68,16 @@ const SavedMovies = (
       if (!response) {
         throw new Error("Something went wrong.");
       }
-      removeMovieId(movieToDelete.id); //-------------------------------------------
+      removeMovieId(movieToDelete.id);
     } catch (err) {
       console.error(err);
     }
   };
-
-  // if data isn't here yet, say so
   if (!userDataLength) {
     return <h2>LOADING...</h2>;
   }
-
   return (
-    <>
+    <div>
       <h2>
         {userData.savedMovies.length
           ? `Viewing ${userData.savedMovies.length} saved ${
@@ -90,19 +87,14 @@ const SavedMovies = (
       </h2>
       {userData.savedMovies.map((movie) => {
         return (
-          <div className="card text-center mb-3 beforeCard">
+          <div key={movie.id} className="card text-center mb-3 beforeCard">
             <div className="card-body">
               <img
                 onClick={handleShow}
                 className="card-img-top"
                 src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
               />
-              <Modal
-                className="modalCard"
-                show={show}
-                onHide={handleClose}
-                key={movie.id}
-              >
+              <Modal className="modalCard" show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                   <h6>Release Date: {movie.release_date}</h6>
                 </Modal.Header>
@@ -133,7 +125,7 @@ const SavedMovies = (
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
 

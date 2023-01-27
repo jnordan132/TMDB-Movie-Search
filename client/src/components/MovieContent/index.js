@@ -4,7 +4,6 @@ import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
 import { ADD_MOVIE } from "../../utils/mutations";
 import { saveMovieIds, getSavedMovieIds } from "../../utils/localStorage";
-// const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
 const MovieContent = ({
   id,
