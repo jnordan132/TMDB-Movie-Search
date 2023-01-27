@@ -1,12 +1,13 @@
 import { Modal, show, Button } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
 import { ADD_MOVIE } from "../../utils/mutations";
+import { saveMovieIds, getSavedMovieIds } from "../../utils/localStorage";
 // const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
 const MovieContent = ({
-  id,
+  movieId,
   title,
   poster_path,
   vote_average,
@@ -17,11 +18,16 @@ const MovieContent = ({
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  const [saveMovie] = useMutation(ADD_MOVIE);
+  const [addMovie] = useMutation(ADD_MOVIE);
+  const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds());
+
+  useEffect(() => {
+    return () => saveMovieIds(savedMovieIds);
+  });
 
   const handleSaveMovie = async () => {
     const movieToSave = {
-      id,
+      movieId,
       title,
       poster_path,
       vote_average,
@@ -33,23 +39,24 @@ const MovieContent = ({
     if (!token) {
       return false;
     }
-    // try {
-    //   await saveMovie({
-    //     variables: {
-    //       userId: {
-    //         title,
-    //         poster_path,
-    //         vote_average,
-    //         release_date,
-    //         overview,
-    //       },
-    //     },
-    //   });
-    //     // if book successfully saves to user's account, save book id to state
-    //     setSavedBookIds([...savedBookIds, bookToSave.bookId]);
-    // } catch (err) {
-    //   console.error(err);
-    // }
+    try {
+      await addMovie({
+        variables: {
+          userId: {
+            movieId,
+            title,
+            poster_path,
+            vote_average,
+            release_date,
+            overview,
+          },
+        },
+      });
+      // if book successfully saves to user's account, save book id to state
+      setSavedMovieIds([...savedMovieIds, movieToSave.movieId]);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   if (poster_path == null || overview == "") {

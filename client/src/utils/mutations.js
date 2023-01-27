@@ -26,26 +26,26 @@ export const USER_LOGIN = gql`
 
 export const ADD_MOVIE = gql`
   mutation addMovie(
-    $id: String!
-    $overview: String!
-    $posterPath: String!
-    $title: String!
-    $releaseDate: String!
-    $voteAverage: Number!
+    $movieId: String!,
+    $overview: String!,
+    $posterPath: String!,
+    $title: String!,
+    $releaseDate: String!,
+    $voteAverage: Number!,
   ) {
     addMovie(
-      id: $id
-      overview: $overview
-      posterPath: $posterPath
-      title: $title
-      releaseDate: $releaseDate
-      voteAverage: $voteAverage
+      movieId: $movieId,
+      overview: $overview,
+      posterPath: $posterPath,
+      title: $title,
+      releaseDate: $releaseDate,
+      voteAverage: $voteAverage,
     ) {
       _id
       username
       email
       savedMovies {
-        id
+        movieId
         overview
         posterPath
         title
