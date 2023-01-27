@@ -14,19 +14,19 @@ export const saveMovieIds = (movieIdArr) => {
   }
 };
 
-// export const removeMovieId = (movieId) => {
-//   const savedMovieIds = localStorage.getItem("saved_movies")
-//     ? JSON.parse(localStorage.getItem("saved_movies"))
-//     : null;
+export const removeMovieId = (id) => {
+  const savedMovieIds = localStorage.getItem("saved_movies")
+    ? JSON.parse(localStorage.getItem("saved_movies"))
+    : null;
 
-//   if (!savedMovieIds) {
-//     return false;
-//   }
+  if (!savedMovieIds) {
+    return false;
+  }
 
-//   const updatedSavedMovieIds = savedMovieIds?.filter(
-//     (savedMovieId) => savedMovieId !== movieId
-//   );
-//   localStorage.setItem("saved_movies", JSON.stringify(updatedSavedMovieIds));
+  const updatedSavedMovieIds = savedMovieIds?.filter(
+    (savedMovieId) => savedMovieId !== id
+  );
+  localStorage.setItem("saved_movies", JSON.stringify(updatedSavedMovieIds));
 
-//   return true;
-// };
+  return true;
+};

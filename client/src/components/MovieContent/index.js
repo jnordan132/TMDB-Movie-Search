@@ -1,5 +1,5 @@
-import { Modal, show, Button } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
+import { Modal } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
 import { ADD_MOVIE } from "../../utils/mutations";

@@ -41,6 +41,7 @@ const typeDefs = gql`
       vote_average: Float!
     ): User
     removeMovie(
+      userId: ID!
       id: Float!
       overview: String!
       poster_path: String!
