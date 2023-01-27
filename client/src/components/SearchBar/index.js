@@ -12,6 +12,7 @@ function SearchBar() {
     fetch(API)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data.results[0]);
         setMovies(data.results);
       });
   }, []);

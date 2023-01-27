@@ -2,11 +2,12 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type Movie {
-    _id: String
-    movieId: String
+    id: String
+    overview: String
+    posterPath: String
     title: String
-    description: String
-    image: String
+    releaseDate: String
+    voteAverage: Float
   }
 
   type User {
@@ -31,16 +32,20 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addMovie(
-      movieId: String!
+      id: String!
+      overview: String!
+      posterPath: String!
       title: String!
-      description: String
-      image: String!
+      releaseDate: String!
+      voteAverage: Float!
     ): User
     removeMovie(
-      movieId: String!
+      id: String!
+      overview: String!
+      posterPath: String!
       title: String!
-      description: String
-      image: String!
+      releaseDate: String!
+      voteAverage: Float!
     ): User
     removeUser(userId: ID!): User
   }

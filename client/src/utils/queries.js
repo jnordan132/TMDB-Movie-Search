@@ -8,12 +8,12 @@ export const GET_USERS = gql`
       email
       password
       savedMovies {
-        authors
-        description
-        movieId
-        image
-        link
+        id
+        overview
+        posterPath
         title
+        releaseDate
+        voteAverage
       }
     }
   }
@@ -27,12 +27,12 @@ export const GET_USER = gql`
       email
       password
       savedMovies {
-        authors
-        description
-        movieId
-        image
-        link
+        id
+        overview
+        posterPath
         title
+        releaseDate
+        voteAverage
       }
     }
   }
