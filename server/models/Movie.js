@@ -4,25 +4,25 @@ const { Schema } = require("mongoose");
 const movieSchema = new Schema(
   {
     id: {
-      type: String,
+      type: Number,
       required: true,
     },
     overview: {
       type: String,
       required: true,
     },
-    posterPath: {
+    poster_path: {
       type: String,
     },
     title: {
       type: String,
       required: true,
     },
-    releaseDate: {
+    release_date: {
       type: String,
       required: true,
     },
-    voteAverage: {
+    vote_average: {
       type: Number,
       required: true,
     },

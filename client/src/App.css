@@ -13,6 +13,7 @@ body {
   list-style-type: none;
   outline: none;
   font-family: "Play", sans-serif;
+  overflow-x: hidden;
 }
 
 h2 {
@@ -50,14 +51,16 @@ h2 {
 /* HEADER */
 .header {
   width: 100%;
-  margin: 0;
+  /* margin-left: 3rem;
+  margin-right: 3rem; */
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .header h1 {
   padding-top: 1.1rem;
   margin: 0;
+  margin-left: 2rem;
   padding-bottom: 1.1rem;
 }
 
@@ -69,6 +72,7 @@ h2 {
 nav ul {
   display: flex;
   padding: 0;
+  margin-right: 2rem;
 }
 
 nav ul li {
@@ -84,11 +88,9 @@ nav ul li a,
   color: rgb(153, 186, 221);
 }
 
-
 nav ul li a:hover {
-  color:#728ca8;
+  color: #728ca8;
 }
-
 
 a {
   cursor: pointer;

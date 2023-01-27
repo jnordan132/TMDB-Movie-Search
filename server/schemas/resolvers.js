@@ -31,15 +31,15 @@ const resolvers = {
     },
     addMovie: async (
       parent,
-      { userId, id, overview, posterPath, title, releaseDate, voteAverage }
+      { userId, id, overview, poster_path, title, release_date, vote_average }
     ) => {
       const movie = {
         id,
         overview,
-        posterPath,
+        poster_path,
         title,
-        releaseDate,
-        voteAverage,
+        release_date,
+        vote_average,
       };
       console.log(movie);
 

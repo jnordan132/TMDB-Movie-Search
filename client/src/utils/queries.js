@@ -10,10 +10,10 @@ export const GET_USERS = gql`
       savedMovies {
         id
         overview
-        posterPath
+        poster_path
         title
-        releaseDate
-        voteAverage
+        release_date
+        vote_average
       }
     }
   }
@@ -29,10 +29,10 @@ export const GET_USER = gql`
       savedMovies {
         id
         overview
-        posterPath
+        poster_path
         title
-        releaseDate
-        voteAverage
+        release_date
+        vote_average
       }
     }
   }

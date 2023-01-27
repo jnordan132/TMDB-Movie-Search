@@ -1,4 +1,4 @@
-function Saved() {
+function SavedMovies() {
   //   if (savedMovies.length == 0) {
   //     return <div>You dont have any movies saved!</div>;
   //   }
@@ -9,4 +9,4 @@ function Saved() {
   );
 }
 
-export default Saved;
+export default SavedMovies;

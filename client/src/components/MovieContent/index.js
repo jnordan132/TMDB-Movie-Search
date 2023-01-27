@@ -41,14 +41,13 @@ const MovieContent = ({
     try {
       await addMovie({
         variables: {
-          userId: {
-            id,
-            title,
-            poster_path,
-            vote_average,
-            release_date,
-            overview,
-          },
+          userId: Auth.getProfile().data._id,
+          id,
+          title,
+          poster_path,
+          vote_average,
+          release_date,
+          overview,
         },
       });
       // if book successfully saves to user's account, save book id to state
@@ -85,9 +84,24 @@ const MovieContent = ({
                 <br />
                 <h6>IMDb Rating: {vote_average} / 10</h6>
               </div>
-              <button className="saveBtn" onClick={handleSaveMovie}>
-                Save
-              </button>
+              <div>
+                {Auth.loggedIn() ? (
+                  <div>
+                    <button className="saveBtn" onClick={handleSaveMovie}>
+                      Save
+                    </button>
+                  </div>
+                ) : (
+                  <div>
+                    <a href="/login">
+                      <button className="saveBtn">Login</button>
+                    </a>
+                    <a href="/signup">
+                      <button className="saveBtn">Signup</button>
+                    </a>
+                  </div>
+                )}
+              </div>
             </Modal.Body>
           </Modal>
         </div>

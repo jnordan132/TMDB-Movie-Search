@@ -27,21 +27,21 @@ export const USER_LOGIN = gql`
 export const ADD_MOVIE = gql`
   mutation addMovie(
     $userId: ID!
-    $id: String!
+    $id: Float!
     $overview: String!
-    $posterPath: String!
+    $poster_path: String!
     $title: String!
-    $releaseDate: String!
-    $voteAverage: Number!
+    $release_date: String!
+    $vote_average: Float!
   ) {
     addMovie(
       userId: $userId
       id: $id
       overview: $overview
-      posterPath: $posterPath
+      poster_path: $poster_path
       title: $title
-      releaseDate: $releaseDate
-      voteAverage: $voteAverage
+      release_date: $release_date
+      vote_average: $vote_average
     ) {
       _id
       username
@@ -49,10 +49,10 @@ export const ADD_MOVIE = gql`
       savedMovies {
         id
         overview
-        posterPath
+        poster_path
         title
-        releaseDate
-        voteAverage
+        release_date
+        vote_average
       }
     }
   }
