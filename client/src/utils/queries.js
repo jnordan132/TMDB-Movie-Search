@@ -8,7 +8,7 @@ export const GET_USERS = gql`
       email
       password
       savedMovies {
-        movieId
+        id
         overview
         posterPath
         title
@@ -27,7 +27,7 @@ export const GET_USER = gql`
       email
       password
       savedMovies {
-        movieId
+        id
         overview
         posterPath
         title

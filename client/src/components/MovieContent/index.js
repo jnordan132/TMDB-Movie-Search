@@ -7,7 +7,7 @@ import { saveMovieIds, getSavedMovieIds } from "../../utils/localStorage";
 // const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
 const MovieContent = ({
-  movieId,
+  id,
   title,
   poster_path,
   vote_average,
@@ -27,7 +27,7 @@ const MovieContent = ({
 
   const handleSaveMovie = async () => {
     const movieToSave = {
-      movieId,
+      id,
       title,
       poster_path,
       vote_average,
@@ -43,7 +43,7 @@ const MovieContent = ({
       await addMovie({
         variables: {
           userId: {
-            movieId,
+            id,
             title,
             poster_path,
             vote_average,
@@ -53,7 +53,7 @@ const MovieContent = ({
         },
       });
       // if book successfully saves to user's account, save book id to state
-      setSavedMovieIds([...savedMovieIds, movieToSave.movieId]);
+      setSavedMovieIds([...savedMovieIds, movieToSave.id]);
     } catch (err) {
       console.error(err);
     }

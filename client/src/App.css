@@ -84,6 +84,12 @@ nav ul li a,
   color: rgb(153, 186, 221);
 }
 
+
+nav ul li a:hover {
+  color:#728ca8;
+}
+
+
 a {
   cursor: pointer;
 }

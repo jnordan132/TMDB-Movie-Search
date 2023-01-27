@@ -31,10 +31,10 @@ const resolvers = {
     },
     addMovie: async (
       parent,
-      { userId, movieId, overview, posterPath, title, releaseDate, voteAverage }
+      { userId, id, overview, posterPath, title, releaseDate, voteAverage }
     ) => {
       const movie = {
-        movieId,
+        id,
         overview,
         posterPath,
         title,
@@ -60,7 +60,7 @@ const resolvers = {
     removeMovie: async (parent, { userId, id }) => {
       return User.findOneAndUpdate(
         { _id: userId },
-        { $pull: { savedMovies: { id: movieId } } },
+        { $pull: { savedMovies: { movieId: id } } },
         { new: true }
       );
     },
