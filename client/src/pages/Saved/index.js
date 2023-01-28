@@ -68,19 +68,21 @@ const SavedMovies = () => {
       <br />
       <div className="grid">
         {userData.savedMovies.map((movie) => {
-          console.log(movie.id);
+          const handleShow = (id) => {
+            setShow(id);
+          };
           return (
             <div key={movie.id} className="card text-center mb-3 beforeCard">
               <div className="card-body">
                 <img
-                  onClick={handleShow}
+                  onClick={() => handleShow(movie.id)}
                   className="card-img-top"
                   src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
                 />
                 <Modal
                   key={movie.id}
                   className="modalCard"
-                  show={show}
+                  show={show === movie.id}
                   onHide={handleClose}
                 >
                   <Modal.Header closeButton>
