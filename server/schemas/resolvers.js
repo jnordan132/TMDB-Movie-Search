@@ -57,22 +57,11 @@ const resolvers = {
     removeUser: async (parent, { userId }) => {
       return User.findOneAndDelete({ _id: userId });
     },
-    removeMovie: async (
-      parent,
-      { userId, id, overview, poster_path, title, release_date, vote_average }
-    ) => {
-      const movie = {
-        id,
-        overview,
-        poster_path,
-        title,
-        release_date,
-        vote_average,
-      };
+    removeMovie: async (parent, { userId, id }) => {
       return User.findOneAndUpdate(
         { _id: userId },
         {
-          $pull: { savedMovies: movie },
+          $pull: { savedMovies: id },
         },
         { new: true }
       );

@@ -40,15 +40,7 @@ const typeDefs = gql`
       release_date: String!
       vote_average: Float!
     ): User
-    removeMovie(
-      userId: ID!
-      id: Float!
-      overview: String!
-      poster_path: String!
-      title: String!
-      release_date: String!
-      vote_average: Float!
-    ): User
+    removeMovie(userId: ID!, id: Float!): User
     removeUser(userId: ID!): User
   }
 `;

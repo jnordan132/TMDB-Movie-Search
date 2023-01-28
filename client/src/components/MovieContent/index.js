@@ -86,8 +86,18 @@ const MovieContent = ({
               <div>
                 {Auth.loggedIn() ? (
                   <div>
-                    <button className="saveBtn" onClick={handleSaveMovie}>
-                      Save
+                    <button
+                      disabled={savedMovieIds?.some(
+                        (savedMovieId) => savedMovieId === id
+                      )}
+                      className="saveBtn"
+                      onClick={() => handleSaveMovie(id)}
+                    >
+                      {savedMovieIds?.some(
+                        (savedMovieId) => savedMovieId === id
+                      )
+                        ? "Saved"
+                        : "Save"}
                     </button>
                   </div>
                 ) : (

@@ -59,24 +59,8 @@ export const ADD_MOVIE = gql`
 `;
 
 export const REMOVE_MOVIE = gql`
-  mutation removeMovie(
-    $userId: ID!
-    $id: Float!
-    $overview: String!
-    $poster_path: String!
-    $title: String!
-    $release_date: String!
-    $vote_average: Float!
-  ) {
-    removeMovie(
-      userId: $userId
-      id: $id
-      overview: $overview
-      poster_path: $poster_path
-      title: $title
-      release_date: $release_date
-      vote_average: $vote_average
-    ) {
+  mutation removeMovie($userId: ID!, $id: Float!) {
+    removeMovie(userId: $userId, id: $id) {
       _id
       username
       email
