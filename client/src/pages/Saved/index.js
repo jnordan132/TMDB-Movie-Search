@@ -31,7 +31,6 @@ const SavedMovies = () => {
     getUserData();
   }, [data]);
 
-  // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteMovie = async (id) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
@@ -48,6 +47,7 @@ const SavedMovies = () => {
         throw new Error("Something went wrong.");
       }
       removeMovieId(id);
+      console.log(id);
     } catch (err) {
       console.error(err);
     }
@@ -101,7 +101,6 @@ const SavedMovies = () => {
                       <br />
                       <h6>IMDb Rating: {movie.vote_average} / 10</h6>
                     </div>
-
                     <div>
                       <div>
                         <button
