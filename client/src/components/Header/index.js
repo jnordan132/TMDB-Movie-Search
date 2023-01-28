@@ -10,7 +10,7 @@ function Header() {
         {Auth.loggedIn() ? (
           <ul>
             <li>
-              <a href="/saved">Saved Movies</a>
+              <a href="/saved">My List</a>
             </li>
             <li onClick={Auth.logout}>
               <a>Logout</a>
