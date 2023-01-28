@@ -62,15 +62,8 @@ export const REMOVE_MOVIE = gql`
   mutation removeMovie($userId: ID!, $id: Float!) {
     removeMovie(userId: $userId, id: $id) {
       _id
-      username
-      email
       savedMovies {
         id
-        overview
-        poster_path
-        title
-        release_date
-        vote_average
       }
     }
   }

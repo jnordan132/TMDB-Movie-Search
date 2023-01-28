@@ -41,7 +41,6 @@ const typeDefs = gql`
       vote_average: Float!
     ): User
     removeMovie(userId: ID!, id: Float!): User
-    removeUser(userId: ID!): User
   }
 `;
 

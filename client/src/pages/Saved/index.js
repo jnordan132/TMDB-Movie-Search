@@ -43,6 +43,7 @@ const SavedMovies = () => {
           id: id,
         },
       });
+      console.log(response);
       if (!response) {
         throw new Error("Something went wrong.");
       }
@@ -51,6 +52,7 @@ const SavedMovies = () => {
     } catch (err) {
       console.error(err);
     }
+    handleClose();
   };
   if (!userDataLength) {
     return <h2>LOADING...</h2>;

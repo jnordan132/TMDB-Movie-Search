@@ -54,14 +54,11 @@ const resolvers = {
         }
       );
     },
-    removeUser: async (parent, { userId }) => {
-      return User.findOneAndDelete({ _id: userId });
-    },
     removeMovie: async (parent, { userId, id }) => {
       return User.findOneAndUpdate(
         { _id: userId },
         {
-          $pull: { savedMovies: id },
+          $pull: { savedMovies: { id: id } },
         },
         { new: true }
       );
