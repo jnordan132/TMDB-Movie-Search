@@ -17,13 +17,23 @@ const MovieContent = ({
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
   const [addMovie] = useMutation(ADD_MOVIE);
-  const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds());
+  const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds() || []);
 
   useEffect(() => {
-    return () => saveMovieIds(savedMovieIds);
-  });
+    saveMovieIds(savedMovieIds);
+  }, [savedMovieIds]);
 
   const handleSaveMovie = async () => {
+    if (savedMovieIds?.some((savedMovieId) => savedMovieId === id)) {
+      return;
+    }
+    let currentSavedMovieIds = getSavedMovieIds() || [];
+
+    // add the new id to the array
+    currentSavedMovieIds.push(id);
+
+    // save the updated array back to local storage
+    saveMovieIds(currentSavedMovieIds);
     const movieToSave = {
       id,
       title,
@@ -49,8 +59,8 @@ const MovieContent = ({
           overview,
         },
       });
-      // if book successfully saves to user's account, save book id to state
-      setSavedMovieIds([...savedMovieIds, movieToSave.id]);
+      setSavedMovieIds(currentSavedMovieIds);
+      saveMovieIds(currentSavedMovieIds);
     } catch (err) {
       console.error(err);
     }
