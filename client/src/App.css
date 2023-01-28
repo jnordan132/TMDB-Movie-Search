@@ -3,9 +3,11 @@
   --mainCol: rgb(153, 186, 221);
   --secCol: rgb(0, 0, 0);
   --thirdCol: #414f5e;
+  min-height: 100%;
 }
 
-body {
+body,
+html {
   background-color: var(--thirdCol);
   margin: 0;
   padding: 0;
@@ -14,6 +16,8 @@ body {
   outline: none;
   font-family: "Play", sans-serif;
   overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
 }
 
 h2 {
@@ -51,8 +55,6 @@ h2 {
 /* HEADER */
 .header {
   width: 100%;
-  /* margin-left: 3rem;
-  margin-right: 3rem; */
   display: flex;
   justify-content: space-between;
 }
@@ -96,35 +98,28 @@ a {
   cursor: pointer;
 }
 
-/* SEARCH BAR */
-.searchBar {
-  margin-left: auto;
-  margin-right: auto;
-  width: 400px;
-  margin-top: -4rem;
-  margin-bottom: 0.75rem;
-}
-
 /* SIGNUP/LOGIN */
 
 .form {
-  width: 25%;
-  margin: 0 auto 0 auto;
+  width: 30vw;
+  margin: 6vh auto auto;
   color: var(--thirdCol);
   background-color: white;
   border: 2px solid var(--mainCol);
   border-radius: 3%;
-  padding: 3rem;
+  padding: 2rem;
 }
 
 .form h1 {
   color: var(--thirdCol);
   text-align: center;
+  margin-bottom: 1rem;
 }
 
 .form p {
   text-align: center;
   margin-top: 15px;
+  margin-bottom: -0.2rem;
   color: var(--thirdCol);
 }
 
@@ -133,17 +128,32 @@ a {
   text-decoration: none;
 }
 
+.signBtn {
+  display: flex;
+  justify-content: center;
+}
+
 .form .blue {
   background-color: var(--thirdCol);
   color: var(--mainCol);
   border: 1px solid var(--mainCol);
   margin-top: 20px;
+  width: 90px;
+  text-align: center;
+}
+
+/* SEARCH BAR */
+.searchBar {
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  margin-top: -4.75rem;
 }
 
 /* MOVIE STUFF */
 .container {
   width: 100%;
-  margin: 1em auto;
+  margin: 1em auto 2em auto;
   background-color: var(--thirdCol);
 }
 
@@ -172,7 +182,7 @@ a {
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 0.75rem;
+  grid-gap: 0.7em;
 }
 
 .beforeCard {
@@ -196,16 +206,36 @@ a {
 }
 
 /* FOOTER */
+
 .footer {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+.footerContent {
+  flex: 1;
   margin: 0;
   color: white;
   text-align: center;
-  padding-bottom: 20px;
+  margin-bottom: 0.75em;
 }
 
 .footer h6 a {
   color: var(--mainCol);
   text-decoration: none;
+}
+
+@media (max-width: 1440px) {
+  .form {
+    width: 35vw;
+  }
+}
+
+@media (max-width: 1200px) {
+  .form {
+    width: 50vw;
+  }
 }
 
 @media (max-width: 991px) {
@@ -227,6 +257,10 @@ a {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 0.75rem;
+  }
+
+  .form {
+    width: 60vw;
   }
 }
 
@@ -254,6 +288,10 @@ a {
   nav ul {
     margin-right: 2rem;
   }
+
+  .form {
+    width: 70vw;
+  }
 }
 
 @media (max-width: 500px) {
@@ -262,5 +300,11 @@ a {
   }
   nav ul {
     margin-right: 1rem;
+  }
+}
+
+@media (max-width: 453px) {
+  .form {
+    width: 85vw;
   }
 }

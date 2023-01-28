@@ -5,7 +5,7 @@ const movieSchema = new Schema(
   {
     id: {
       type: Number,
-      required: true,
+      // unique: true,
     },
     overview: {
       type: String,

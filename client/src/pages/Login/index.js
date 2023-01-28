@@ -88,14 +88,16 @@ const LoginForm = () => {
             Password is required!
           </Form.Control.Feedback>
         </Form.Group>
-        <Button
-          className="blue"
-          disabled={!(userFormData.email && userFormData.password)}
-          type="submit"
-          variant="success"
-        >
-          Submit
-        </Button>
+        <div className="signBtn">
+          <Button
+            className="blue"
+            disabled={!(userFormData.email && userFormData.password)}
+            type="submit"
+            variant="success"
+          >
+            Submit
+          </Button>
+        </div>
         <p>
           Dont have an account? <a href="/signup">Signup</a>
         </p>

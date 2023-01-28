@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <div className="footer">
-      <div>
+      <div className="footerContent">
         <h6>
           MovieWiki Was Created Using The{" "}
           <a
