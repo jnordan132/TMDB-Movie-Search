@@ -8,12 +8,11 @@ import { removeMovieId } from "../../utils/localStorage";
 
 const SavedMovies = () => {
   const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
   const [removeMovie] = useMutation(REMOVE_MOVIE);
   const [userData, setUserData] = useState({});
   const userDataLength = Object.keys(userData).length;
-  const { loading, error, data } = useQuery(GET_USER, {
+  const { data } = useQuery(GET_USER, {
     variables: { userId: Auth.getProfile().data._id },
   });
 
@@ -105,7 +104,10 @@ const SavedMovies = () => {
 
                     <div>
                       <div>
-                        <button className="saveBtn" onClick={handleDeleteMovie}>
+                        <button
+                          className="saveBtn"
+                          onClick={() => handleDeleteMovie(movie.id)}
+                        >
                           Remove
                         </button>
                       </div>
