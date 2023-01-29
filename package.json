@@ -17,10 +17,10 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "node --max_old_space_size=2048 node_modules/.bin/react-scripts start",
-    "build": "cd client && npm run build",
+    "start": "npm run install && npm run build && (cd ./server && npm run start)",
     "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "install": "cd server && npm i && cd ../client && npm i"
+    "install": "cd server && npm i && cd ../client && npm i",
+    "build": "cd client && npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
