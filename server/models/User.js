@@ -1,6 +1,40 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const movieSchema = require("./Movie");
+
+const movieSchema = new Schema(
+  {
+    id: {
+      type: Number,
+      unique: true,
+      sparse: true,
+    },
+    overview: {
+      type: String,
+      required: true,
+    },
+    poster_path: {
+      type: String,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    release_date: {
+      type: String,
+      required: true,
+    },
+    vote_average: {
+      type: Number,
+      required: true,
+    },
+  },
+  {
+    toJSON: {
+      virtuals: false,
+    },
+    id: false,
+  }
+);
 
 const userSchema = new Schema(
   {
