@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "node --max_old_space_size=2048 node_modules/.bin/react-scripts start",
-    "build": "cd client && npm run build",
+    "build": "node --max_old_space_size=2048 node_modules/.bin/react-scripts build",
     "dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i"
   },
