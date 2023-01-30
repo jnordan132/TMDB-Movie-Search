@@ -2,63 +2,63 @@ import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
-import { ADD_MOVIE } from "../../utils/mutations";
-import { saveMovieIds, getSavedMovieIds } from "../../utils/localStorage";
+import { ADD_SHOW } from "../../utils/mutations";
+import { saveShowIds, getSavedShowIds } from "../../utils/localStorage";
 
-const MovieContent = ({
+const ShowContent = ({
   id,
-  title,
+  name,
   poster_path,
   vote_average,
-  release_date,
+  first_air_date,
   overview,
 }) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  const [addMovie] = useMutation(ADD_MOVIE);
-  const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds() || []);
+  const [addShow] = useMutation(ADD_SHOW);
+  const [savedShowIds, setSavedShowIds] = useState(getSavedShowIds() || []);
 
   useEffect(() => {
-    saveMovieIds(savedMovieIds);
-  }, [savedMovieIds]);
+    saveShowIds(savedShowIds);
+  }, [savedShowIds]);
 
-  const handleSaveMovie = async () => {
-    if (savedMovieIds?.some((savedMovieId) => savedMovieId === id)) {
+  const handleSaveShow = async () => {
+    if (savedShowIds?.some((savedShowId) => savedShowId === id)) {
       return;
     }
-    let currentSavedMovieIds = getSavedMovieIds() || [];
+    let currentSavedShowIds = getSavedShowIds() || [];
 
-    currentSavedMovieIds.push(id);
+    currentSavedShowIds.push(id);
 
-    saveMovieIds(currentSavedMovieIds);
-    const movieToSave = {
+    saveShowIds(currentSavedShowIds);
+    const showToSave = {
       id,
-      title,
+      name,
       poster_path,
       vote_average,
-      release_date,
+      first_air_date,
       overview,
     };
-    console.log(movieToSave);
+    console.log(showToSave);
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
       return false;
     }
     try {
-      await addMovie({
+      await addShow({
         variables: {
           userId: Auth.getProfile().data._id,
           id,
-          title,
+          name,
           poster_path,
           vote_average,
-          release_date,
+          first_air_date,
           overview,
         },
       });
-      setSavedMovieIds(currentSavedMovieIds);
-      saveMovieIds(currentSavedMovieIds);
+      setSavedShowIds(currentSavedShowIds);
+      saveShowIds(currentSavedShowIds);
     } catch (err) {
       console.error(err);
     }
@@ -83,32 +83,30 @@ const MovieContent = ({
                   className="card"
                   src={"https://image.tmdb.org/t/p/w500/" + poster_path}
                 />
-                <h3>{title}</h3>
+                <h3>{name}</h3>
                 <br />
                 <p>{overview}</p>
                 <h6>
                   <b>Rating: {vote_average} / 10</b>
                 </h6>
                 <h6>
-                  <b>Released on: {release_date}</b>
+                  <b>Release Date: {first_air_date}</b>
                 </h6>
               </div>
               <div>
                 {Auth.loggedIn() ? (
                   <div>
                     <button
-                      disabled={savedMovieIds?.some(
-                        (savedMovieId) => savedMovieId === id
+                      disabled={savedShowIds?.some(
+                        (savedShowId) => savedShowId === id
                       )}
                       className="saveBtn"
                       onClick={() => {
-                        handleSaveMovie(id);
+                        handleSaveShow(id);
                         handleClose();
                       }}
                     >
-                      {savedMovieIds?.some(
-                        (savedMovieId) => savedMovieId === id
-                      )
+                      {savedShowIds?.some((savedShowId) => savedShowId === id)
                         ? "Saved"
                         : "Save"}
                     </button>
@@ -132,4 +130,4 @@ const MovieContent = ({
   }
 };
 
-export default MovieContent;
+export default ShowContent;

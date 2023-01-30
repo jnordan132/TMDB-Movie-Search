@@ -58,11 +58,56 @@ export const ADD_MOVIE = gql`
   }
 `;
 
+export const ADD_SHOW = gql`
+  mutation addShow(
+    $userId: ID!
+    $id: Float!
+    $overview: String!
+    $poster_path: String!
+    $name: String!
+    $first_air_date: String!
+    $vote_average: Float!
+  ) {
+    addShow(
+      userId: $userId
+      id: $id
+      overview: $overview
+      poster_path: $poster_path
+      name: $name
+      first_air_date: $first_air_date
+      vote_average: $vote_average
+    ) {
+      _id
+      username
+      email
+      savedShows {
+        id
+        overview
+        poster_path
+        name
+        first_air_date
+        vote_average
+      }
+    }
+  }
+`;
+
 export const REMOVE_MOVIE = gql`
   mutation removeMovie($userId: ID!, $id: Float!) {
     removeMovie(userId: $userId, id: $id) {
       _id
       savedMovies {
+        id
+      }
+    }
+  }
+`;
+
+export const REMOVE_SHOW = gql`
+  mutation removeShow($userId: ID!, $id: Float!) {
+    removeShow(userId: $userId, id: $id) {
+      _id
+      savedShows {
         id
       }
     }

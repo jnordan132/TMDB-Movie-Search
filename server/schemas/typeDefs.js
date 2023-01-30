@@ -10,12 +10,22 @@ const typeDefs = gql`
     vote_average: Float
   }
 
+  type Show {
+    id: Float
+    overview: String
+    poster_path: String
+    name: String
+    first_air_date: String
+    vote_average: Float
+  }
+
   type User {
     _id: ID
     username: String
     email: String
     password: String
     savedMovies: [Movie]
+    savedShows: [Show]
   }
 
   type Auth {
@@ -40,7 +50,17 @@ const typeDefs = gql`
       release_date: String!
       vote_average: Float!
     ): User
+    addShow(
+      userId: ID!
+      id: Float!
+      overview: String!
+      poster_path: String!
+      name: String!
+      first_air_date: String!
+      vote_average: Float!
+    ): User
     removeMovie(userId: ID!, id: Float!): User
+    removeShow(userId: ID!, id: Float!): User
   }
 `;
 

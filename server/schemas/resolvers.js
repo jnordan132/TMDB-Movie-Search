@@ -54,11 +54,45 @@ const resolvers = {
         }
       );
     },
+    addShow: async (
+      parent,
+      { userId, id, overview, poster_path, name, first_air_date, vote_average }
+    ) => {
+      const show = {
+        id,
+        overview,
+        poster_path,
+        name,
+        first_air_date,
+        vote_average,
+      };
+      console.log(show);
+
+      return User.findOneAndUpdate(
+        { _id: userId },
+        {
+          $addToSet: { savedShows: show },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
     removeMovie: async (parent, { userId, id }) => {
       return User.findOneAndUpdate(
         { _id: userId },
         {
           $pull: { savedMovies: { id: id } },
+        },
+        { new: true }
+      );
+    },
+    removeShow: async (parent, { userId, id }) => {
+      return User.findOneAndUpdate(
+        { _id: userId },
+        {
+          $pull: { savedShows: { id: id } },
         },
         { new: true }
       );

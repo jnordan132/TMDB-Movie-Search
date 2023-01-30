@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import MovieContent from "../MovieContent";
+import MovieContent from "../../components/MovieContent";
 import { BsSearch } from "react-icons/bs";
 import { Navbar, Container, Form, FormControl } from "react-bootstrap";
 
-function SearchBar() {
+function Movies() {
   const API_KEY = "289007003aedc1f5fc443437ec56c8e0";
-  const API = `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`;
+  const API = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
   useEffect(() => {
@@ -79,4 +79,4 @@ function SearchBar() {
   );
 }
 
-export default SearchBar;
+export default Movies;

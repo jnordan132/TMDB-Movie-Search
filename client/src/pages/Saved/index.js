@@ -2,14 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Modal, Spinner } from "react-bootstrap";
 import { useQuery, useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
-import { REMOVE_MOVIE } from "../../utils/mutations";
+import { REMOVE_MOVIE, REMOVE_SHOW } from "../../utils/mutations";
 import { GET_USER } from "../../utils/queries";
-import { removeMovieId } from "../../utils/localStorage";
+import { removeMovieId, removeShowId } from "../../utils/localStorage";
 
-const SavedMovies = () => {
+const SavedList = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const [removeMovie] = useMutation(REMOVE_MOVIE);
+  const [removeShow] = useMutation(REMOVE_SHOW);
+
   const [userData, setUserData] = useState({});
   const userDataLength = Object.keys(userData).length;
   const { data } = useQuery(GET_USER, {
@@ -54,6 +56,31 @@ const SavedMovies = () => {
     }
     handleClose();
   };
+
+  const handleDeleteShow = async (id) => {
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    if (!token) {
+      return false;
+    }
+    try {
+      const response = await removeShow({
+        variables: {
+          userId: Auth.getProfile().data._id,
+          id: id,
+        },
+      });
+      console.log(response);
+      if (!response) {
+        throw new Error("Something went wrong.");
+      }
+      removeShowId(id);
+      console.log(id);
+    } catch (err) {
+      console.error(err);
+    }
+    handleClose();
+  };
+
   if (!userDataLength) {
     return (
       <Spinner animation="border" role="status" className="spinner">
@@ -65,9 +92,9 @@ const SavedMovies = () => {
     <div className="container">
       <br />
       <h2 className="moviesSaved">
-        {userData.savedMovies.length
+        {userData.savedMovies.length || userData.savedShows.length
           ? `${userData.username + "'s " + "Saved List:"}`
-          : "You have no saved movies!"}
+          : "You dont have anything saved!"}
       </h2>
       <br />
       <div className="grid">
@@ -76,7 +103,10 @@ const SavedMovies = () => {
             setShow(id);
           };
           return (
-            <div key={movie.id} className="card text-center mb-3 beforeCard">
+            <div
+              key={movie.id || show.id}
+              className="card text-center mb-3 beforeCard"
+            >
               <div className="card-body">
                 <img
                   onClick={() => handleShow(movie.id)}
@@ -122,9 +152,60 @@ const SavedMovies = () => {
             </div>
           );
         })}
+        {userData.savedShows.map((show) => {
+          const handleShow = (id) => {
+            setShow(id);
+          };
+          return (
+            <div key={show.id} className="card text-center mb-3 beforeCard">
+              <div className="card-body">
+                <img
+                  onClick={() => handleShow(show.id)}
+                  className="card-img-top"
+                  src={"https://image.tmdb.org/t/p/w500/" + show.poster_path}
+                />
+                <Modal
+                  key={show.id}
+                  className="modalCard"
+                  show={show === show.id}
+                  onHide={handleClose}
+                >
+                  <Modal.Header closeButton>
+                    <h6>Release Date: {show.first_air_date}</h6>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <div className="movieModal">
+                      <img
+                        className="card"
+                        src={
+                          "https://image.tmdb.org/t/p/w500/" + show.poster_path
+                        }
+                      />
+                      <h3>{show.name}</h3>
+                      <br />
+                      <p>{show.overview}</p>
+                      <br />
+                      <h6>IMDb Rating: {show.vote_average} / 10</h6>
+                    </div>
+                    <div>
+                      <div>
+                        <button
+                          className="saveBtn"
+                          onClick={() => handleDeleteShow(show.id)}
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  </Modal.Body>
+                </Modal>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
 };
 
-export default SavedMovies;
+export default SavedList;

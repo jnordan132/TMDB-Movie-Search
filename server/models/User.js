@@ -5,26 +5,60 @@ const movieSchema = new Schema(
   {
     id: {
       type: Number,
-      required: true,
+      // required: true,
     },
     overview: {
       type: String,
-      required: true,
+      // required: true,
     },
     poster_path: {
       type: String,
     },
     title: {
       type: String,
-      required: true,
+      // required: true,
     },
     release_date: {
       type: String,
-      required: true,
+      // required: true,
     },
     vote_average: {
       type: Number,
-      required: true,
+      // required: true,
+    },
+  },
+  {
+    toJSON: {
+      virtuals: false,
+    },
+    id: false,
+  }
+);
+
+const showSchema = new Schema(
+  {
+    id: {
+      type: Number,
+      // required: true,
+    },
+    overview: {
+      type: String,
+      // required: true,
+    },
+    poster_path: {
+      type: String,
+    },
+    name: {
+      type: String,
+      // required: true,
+    },
+    first_air_date: {
+      type: String,
+      // required: true,
+    },
+    vote_average: {
+      type: Number,
+      // required: true,
     },
   },
   {
@@ -53,6 +87,7 @@ const userSchema = new Schema(
       required: true,
     },
     savedMovies: [movieSchema],
+    savedShows: [showSchema],
   },
   {
     toJSON: {
