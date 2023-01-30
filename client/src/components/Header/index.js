@@ -1,4 +1,5 @@
 import Auth from "../../utils/auth";
+import { clearMovieId } from "../../utils/localStorage";
 
 function Header() {
   return (
@@ -12,7 +13,12 @@ function Header() {
             <li>
               <a href="/saved">My List</a>
             </li>
-            <li onClick={Auth.logout}>
+            <li
+              onClick={() => {
+                Auth.logout();
+                clearMovieId();
+              }}
+            >
               <a>Logout</a>
             </li>
           </ul>

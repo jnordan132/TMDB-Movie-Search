@@ -313,6 +313,12 @@ a {
   }
 }
 
+@media (max-width: 530px) {
+  .form .blue {
+    width: 35%;
+  }
+}
+
 @media (max-width: 500px) {
   .header h1 {
     margin-left: 1rem;

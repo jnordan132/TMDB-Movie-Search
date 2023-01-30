@@ -30,3 +30,7 @@ export const removeMovieId = (id) => {
 
   return true;
 };
+
+export const clearMovieId = () => {
+  localStorage.clearItem("saved_movies");
+};
