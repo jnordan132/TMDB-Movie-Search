@@ -107,7 +107,11 @@ const MovieContent = ({
                         (savedMovieId) => savedMovieId === id
                       )}
                       className="saveBtn"
-                      onClick={() => handleSaveMovie(id)}
+                      // show={show}
+                      onClick={() => {
+                        handleSaveMovie(id);
+                        handleClose();
+                      }}
                     >
                       {savedMovieIds?.some(
                         (savedMovieId) => savedMovieId === id

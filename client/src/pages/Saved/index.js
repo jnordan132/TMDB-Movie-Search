@@ -63,6 +63,7 @@ const SavedMovies = () => {
   }
   return (
     <div className="container">
+      <br />
       <h2 className="moviesSaved">
         {userData.savedMovies.length
           ? `${userData.username + "'s " + "Saved List:"}`

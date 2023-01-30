@@ -37,6 +37,7 @@ h2 {
 .display-2 {
   text-align: center;
   margin-top: 10rem;
+  color: var(--mainCol);
 }
 
 .button {
@@ -138,7 +139,7 @@ a {
   color: var(--mainCol);
   border: 1px solid var(--mainCol);
   margin-top: 20px;
-  width: 90px;
+  width: 25%;
   text-align: center;
 }
 
@@ -199,7 +200,7 @@ a {
 .saveBtn {
   color: white;
   background: var(--mainCol);
-  width: 15%;
+  width: 25%;
   border-radius: 0.4em;
   border: 2px solid var(--thirdCol);
   margin: 5px;
