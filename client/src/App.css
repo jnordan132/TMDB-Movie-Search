@@ -4,6 +4,7 @@
   --secCol: rgb(0, 0, 0);
   --thirdCol: #414f5e;
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 body,
