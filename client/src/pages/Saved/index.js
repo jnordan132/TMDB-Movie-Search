@@ -152,46 +152,46 @@ const SavedList = () => {
             </div>
           );
         })}
-        {userData.savedShows.map((show) => {
+        {userData.savedShows.map((shows) => {
           const handleShow = (id) => {
             setShow(id);
           };
           return (
-            <div key={show.id} className="card text-center mb-3 beforeCard">
+            <div key={shows.id} className="card text-center mb-3 beforeCard">
               <div className="card-body">
                 <img
-                  onClick={() => handleShow(show.id)}
+                  onClick={() => handleShow(shows.id)}
                   className="card-img-top"
-                  src={"https://image.tmdb.org/t/p/w500/" + show.poster_path}
+                  src={"https://image.tmdb.org/t/p/w500/" + shows.poster_path}
                 />
                 <Modal
-                  key={show.id}
+                  key={shows.id}
                   className="modalCard"
-                  show={show === show.id}
+                  show={show === shows.id}
                   onHide={handleClose}
                 >
                   <Modal.Header closeButton>
-                    <h6>Release Date: {show.first_air_date}</h6>
+                    <h6>Release Date: {shows.first_air_date}</h6>
                   </Modal.Header>
                   <Modal.Body>
                     <div className="movieModal">
                       <img
                         className="card"
                         src={
-                          "https://image.tmdb.org/t/p/w500/" + show.poster_path
+                          "https://image.tmdb.org/t/p/w500/" + shows.poster_path
                         }
                       />
-                      <h3>{show.name}</h3>
+                      <h3>{shows.name}</h3>
                       <br />
-                      <p>{show.overview}</p>
+                      <p>{shows.overview}</p>
                       <br />
-                      <h6>IMDb Rating: {show.vote_average} / 10</h6>
+                      <h6>IMDb Rating: {shows.vote_average} / 10</h6>
                     </div>
                     <div>
                       <div>
                         <button
                           className="saveBtn"
-                          onClick={() => handleDeleteShow(show.id)}
+                          onClick={() => handleDeleteShow(shows.id)}
                         >
                           Remove
                         </button>

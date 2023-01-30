@@ -90,7 +90,7 @@ const MovieContent = ({
                   <b>Rating: {vote_average} / 10</b>
                 </h6>
                 <h6>
-                  <b>Released on: {release_date}</b>
+                  <b>Release Date: {release_date}</b>
                 </h6>
               </div>
               <div>
