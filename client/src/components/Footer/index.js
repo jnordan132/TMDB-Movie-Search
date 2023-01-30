@@ -1,6 +1,8 @@
+import { Nav, Navbar } from "react-bootstrap";
+
 function Footer() {
   return (
-    <div className="footer">
+    <Navbar expand="lg" bg="dark" variant="dark" className="footer">
       <div className="footerContent">
         <h6>
           MovieWiki Was Created Using The{" "}
@@ -13,7 +15,7 @@ function Footer() {
           </a>
         </h6>
       </div>
-    </div>
+    </Navbar>
   );
 }
 

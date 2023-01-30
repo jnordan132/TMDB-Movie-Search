@@ -31,7 +31,7 @@ const LoginForm = () => {
 
     try {
       const { data } = await login({
-        variables: { ...userFormData },
+        variables: { ...userFormData, email: userFormData.email.toLowerCase() },
       });
 
       Auth.login(data.login.token);

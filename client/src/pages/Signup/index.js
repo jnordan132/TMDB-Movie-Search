@@ -30,7 +30,7 @@ const Signup = () => {
 
     try {
       const { data } = await addUser({
-        variables: { ...userFormData },
+        variables: { ...userFormData, email: userFormData.email.toLowerCase() },
       });
       console.log(data);
       Auth.login(data.addUser.token);

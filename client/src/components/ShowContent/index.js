@@ -96,6 +96,7 @@ const ShowContent = ({
               <div>
                 {Auth.loggedIn() ? (
                   <div>
+                    <br />
                     <button
                       disabled={savedShowIds?.some(
                         (savedShowId) => savedShowId === id
@@ -113,12 +114,11 @@ const ShowContent = ({
                   </div>
                 ) : (
                   <div>
-                    <a href="/login">
-                      <button className="saveBtn">Login</button>
-                    </a>
-                    <a href="/signup">
-                      <button className="saveBtn">Signup</button>
-                    </a>
+                    <br />
+                    <p className="cantSave">
+                      <a href="/login">Login</a> or <a href="/signup">Signup</a>{" "}
+                      to save this
+                    </p>
                   </div>
                 )}
               </div>
