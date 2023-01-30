@@ -1,14 +1,10 @@
 import Auth from "../../utils/auth";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { useMutation } from "@apollo/client";
-import { REMOVE_USER } from "../../utils/mutations";
 import { clearMovieId } from "../../utils/localStorage";
 
 function Header() {
-  const [removeUser] = useMutation(REMOVE_USER);
-
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="grey" variant="dark">
       <Navbar.Brand href="/">MovieWiki</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
@@ -22,7 +18,9 @@ function Header() {
             {Auth.loggedIn() ? (
               <div className="dropDown">
                 <NavDropdown.Item href="/saved">My List</NavDropdown.Item>
+                <NavDropdown.Divider />
                 <NavDropdown.Item
+                  className="danger"
                   onClick={() => {
                     Auth.logout();
                     clearMovieId();
@@ -41,10 +39,6 @@ function Header() {
                 </div>
               </div>
             )}
-            <NavDropdown.Divider />
-            <NavDropdown.Item className="danger" onClick={removeUser}>
-              Delete Account
-            </NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>

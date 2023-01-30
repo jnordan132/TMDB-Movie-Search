@@ -12,17 +12,6 @@ export const ADD_USER = gql`
   }
 `;
 
-export const REMOVE_USER = gql`
-  mutation removeUser($username: String!, $email: String!, $password: String!) {
-    removeUser(username: $username, email: $email, password: $password) {
-      token
-      user {
-        _id
-      }
-    }
-  }
-`;
-
 export const USER_LOGIN = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {

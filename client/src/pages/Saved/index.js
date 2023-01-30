@@ -119,9 +119,7 @@ const SavedList = () => {
                   show={show === movie.id}
                   onHide={handleClose}
                 >
-                  <Modal.Header closeButton>
-                    <h6>Release Date: {movie.release_date}</h6>
-                  </Modal.Header>
+                  <Modal.Header closeButton></Modal.Header>
                   <Modal.Body>
                     <div className="movieModal">
                       <img
@@ -131,13 +129,18 @@ const SavedList = () => {
                         }
                       />
                       <h3>{movie.title}</h3>
-                      <br />
+                      <div class="center">
+                        <h6>
+                          <b>Release Date: {movie.release_date}</b>
+                        </h6>
+                        <h6>
+                          <b>Rating: {movie.vote_average} / 10</b>
+                        </h6>
+                      </div>
                       <p>{movie.overview}</p>
-                      <br />
-                      <h6>IMDb Rating: {movie.vote_average} / 10</h6>
                     </div>
                     <div>
-                      <div>
+                      <div className="buttonDiv">
                         <button
                           className="saveBtn"
                           onClick={() => handleDeleteMovie(movie.id)}
@@ -170,9 +173,7 @@ const SavedList = () => {
                   show={show === shows.id}
                   onHide={handleClose}
                 >
-                  <Modal.Header closeButton>
-                    <h6>Release Date: {shows.first_air_date}</h6>
-                  </Modal.Header>
+                  <Modal.Header closeButton></Modal.Header>
                   <Modal.Body>
                     <div className="movieModal">
                       <img
@@ -182,10 +183,15 @@ const SavedList = () => {
                         }
                       />
                       <h3>{shows.name}</h3>
-                      <br />
+                      <div class="center">
+                        <h6>
+                          <b>Release Date: {shows.first_air_date}</b>
+                        </h6>
+                        <h6>
+                          <b>Rating: {shows.vote_average} / 10</b>
+                        </h6>
+                      </div>
                       <p>{shows.overview}</p>
-                      <br />
-                      <h6>IMDb Rating: {shows.vote_average} / 10</h6>
                     </div>
                     <div>
                       <div>

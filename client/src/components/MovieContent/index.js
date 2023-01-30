@@ -84,19 +84,19 @@ const MovieContent = ({
                   src={"https://image.tmdb.org/t/p/w500/" + poster_path}
                 />
                 <h3>{title}</h3>
-                <br />
+                <div class="center">
+                  <h6>
+                    <b>Release Date: {release_date}</b>
+                  </h6>
+                  <h6>
+                    <b>Rating: {vote_average} / 10</b>
+                  </h6>
+                </div>
                 <p>{overview}</p>
-                <h6>
-                  <b>Rating: {vote_average} / 10</b>
-                </h6>
-                <h6>
-                  <b>Release Date: {release_date}</b>
-                </h6>
               </div>
               <div>
                 {Auth.loggedIn() ? (
-                  <div>
-                    <br />
+                  <div className="buttonDiv">
                     <button
                       disabled={savedMovieIds?.some(
                         (savedMovieId) => savedMovieId === id
@@ -116,7 +116,6 @@ const MovieContent = ({
                   </div>
                 ) : (
                   <div>
-                    <br />
                     <p className="cantSave">
                       <a href="/login">Login</a> or <a href="/signup">Signup</a>{" "}
                       to save this

@@ -84,18 +84,20 @@ const ShowContent = ({
                   src={"https://image.tmdb.org/t/p/w500/" + poster_path}
                 />
                 <h3>{name}</h3>
-                <br />
+
+                <div class="center">
+                  <h6>
+                    <b>Release Date: {first_air_date}</b>
+                  </h6>
+                  <h6>
+                    <b>Rating: {vote_average} / 10</b>
+                  </h6>
+                </div>
                 <p>{overview}</p>
-                <h6>
-                  <b>Rating: {vote_average} / 10</b>
-                </h6>
-                <h6>
-                  <b>Release Date: {first_air_date}</b>
-                </h6>
               </div>
               <div>
                 {Auth.loggedIn() ? (
-                  <div>
+                  <div className="buttonDiv">
                     <br />
                     <button
                       disabled={savedShowIds?.some(
