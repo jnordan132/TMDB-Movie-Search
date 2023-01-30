@@ -79,7 +79,7 @@ const MovieContent = ({
           />
           <Modal className="modalCard" show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-              <h6>Release Date: {release_date}</h6>
+              {/* <h6>Release Date: {release_date}</h6> */}
             </Modal.Header>
             <Modal.Body>
               <div className="movieModal">
@@ -90,8 +90,14 @@ const MovieContent = ({
                 <h3>{title}</h3>
                 <br />
                 <p>{overview}</p>
-                <br />
-                <h6>IMDb Rating: {vote_average} / 10</h6>
+                {/* <div className="otherInfo"> */}
+                <h6>
+                  <b>Rating: {vote_average} / 10</b>
+                </h6>
+                <h6>
+                  <b>Released on: {release_date}</b>
+                </h6>
+                {/* </div> */}
               </div>
               <div>
                 {Auth.loggedIn() ? (

@@ -175,6 +175,11 @@ a {
   margin-right: auto;
 }
 
+.otherInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
 .modalFooter {
   margin-right: auto;
 }
@@ -203,6 +208,18 @@ a {
 .saveBtn:active {
   transform: scale(0.97);
   transition: 0.1s;
+}
+
+.moviesSaved {
+  color: var(--mainCol);
+  text-align: left;
+}
+
+.spinner {
+  position: absolute;
+  bottom: 55%;
+  right: 50%;
+  color: var(--mainCol);
 }
 
 /* FOOTER */

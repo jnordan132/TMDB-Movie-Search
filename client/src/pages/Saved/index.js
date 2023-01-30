@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Modal } from "react-bootstrap";
+import { Modal, Spinner } from "react-bootstrap";
 import { useQuery, useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
 import { REMOVE_MOVIE } from "../../utils/mutations";
@@ -55,15 +55,17 @@ const SavedMovies = () => {
     handleClose();
   };
   if (!userDataLength) {
-    return <h2>LOADING...</h2>;
+    return (
+      <Spinner animation="border" role="status" className="spinner">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
   }
   return (
     <div className="container">
-      <h2>
+      <h2 className="moviesSaved">
         {userData.savedMovies.length
-          ? `${userData.username + "'s " + userData.savedMovies.length} saved ${
-              userData.savedMovies.length === 1 ? "movie" : "movies"
-            }:`
+          ? `${userData.username + "'s " + "Saved List:"}`
           : "You have no saved movies!"}
       </h2>
       <br />
