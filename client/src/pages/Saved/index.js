@@ -194,7 +194,7 @@ const SavedList = () => {
                       <p>{shows.overview}</p>
                     </div>
                     <div>
-                      <div>
+                      <div className="buttonDiv">
                         <button
                           className="saveBtn"
                           onClick={() => handleDeleteShow(shows.id)}
