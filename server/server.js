@@ -20,7 +20,6 @@ if (cluster.isMaster) {
   const { ApolloServer } = require("apollo-server-express");
   const { typeDefs, resolvers } = require("./schemas");
 
-  const PORT = process.env.PORT || 3001;
   const app = express();
 
   const server = new ApolloServer({
@@ -43,14 +42,9 @@ if (cluster.isMaster) {
     res.sendFile(path.join(__dirname, "../client/build/index.html"));
   });
 
-  db.once("open", () => {
-    app.listen(PORT, () => {
-      console.log(
-        `API server running on port ${PORT} in worker ${process.pid}!`
-      );
-      console.log(
-        `Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`
-      );
-    });
+  const PORT = process.env.PORT || 3001;
+  app.listen(PORT, () => {
+    console.log(`API server running on port ${PORT} in worker ${process.pid}!`);
+    console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
   });
 }
