@@ -1,4 +1,9 @@
 import decode from "jwt-decode";
+
+interface DecodedToken {
+  exp: number;
+}
+
 class AuthService {
   getProfile() {
     return decode(this.getToken());
@@ -9,9 +14,9 @@ class AuthService {
     return !!token && !this.isTokenExpired(token);
   }
 
-  isTokenExpired(token) {
+  isTokenExpired(token: string) {
     try {
-      const decoded = decode(token);
+      const decoded = decode(token) as DecodedToken; // Type assertion
       if (decoded.exp < Date.now() / 1000) {
         return true;
       } else return false;
@@ -24,7 +29,7 @@ class AuthService {
     return localStorage.getItem("id_token");
   }
 
-  login(idToken) {
+  login(idToken: string) {
     localStorage.setItem("id_token", idToken);
     window.location.assign("/");
   }

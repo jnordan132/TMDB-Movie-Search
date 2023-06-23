@@ -1,23 +1,36 @@
 import React, { useState, useEffect } from "react";
-import ShowContent from "../../components/ShowContent";
+import MovieContent from "../MovieContent/index.tsx";
+import ShowContent from "../ShowContent/index.tsx";
 import { BsSearch } from "react-icons/bs";
 import { Navbar, Container, Form, FormControl } from "react-bootstrap";
 
-function Shows() {
+export default function SearchBar() {
   const API_KEY = "289007003aedc1f5fc443437ec56c8e0";
-  const API = `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}`;
-  const [shows, setShows] = useState([]);
+  const API = `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`;
+  const [content, setContent] = useState<
+    Array<{
+      name: any;
+      first_air_date: any;
+      poster_path: any;
+      vote_average: any;
+      release_date: any;
+      overview: any;
+      title?: string;
+      id?: number;
+    }>
+  >([]);
+
   const [query, setQuery] = useState("");
   useEffect(() => {
     fetch(API)
       .then((res) => res.json())
       .then((data) => {
         console.log(data.results[0]);
-        setShows(data.results);
+        setContent(data.results);
       });
   }, []);
 
-  const searchShow = async (event) => {
+  const searchContent = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     try {
       if (query == "") {
@@ -26,14 +39,16 @@ function Shows() {
         const url = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&query=${query}`;
         const res = await fetch(url);
         const data = await res.json();
-        setShows(data.results);
+        setContent(data.results);
       }
     } catch (err) {
       console.log(err);
     }
   };
 
-  const changeHandler = (event) => {
+  const changeHandler = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
     setQuery(event.target.value);
   };
   return (
@@ -43,7 +58,7 @@ function Shows() {
           <Navbar.Collapse id="navbarScroll">
             <Form
               className="d-flex justify-content-center searchBar"
-              onSubmit={searchShow}
+              onSubmit={searchContent}
               autoComplete="off"
             >
               <FormControl
@@ -63,12 +78,32 @@ function Shows() {
         </Container>
       </Navbar>
       <div>
-        {shows.length > 0 ? (
+        {content.length > 0 ? (
           <div className="container">
             <div className="grid">
-              {shows.map((showReq) => (
-                <ShowContent key={showReq.id} {...showReq} />
-              ))}
+              {content.map((item) =>
+                item.hasOwnProperty("title") ? (
+                  <MovieContent
+                    key={item.id}
+                    id={item.id}
+                    title={item.title}
+                    poster_path={item.poster_path}
+                    vote_average={item.vote_average}
+                    release_date={item.release_date}
+                    overview={item.overview}
+                  />
+                ) : (
+                  <ShowContent
+                    key={item.id}
+                    id={item.id}
+                    name={item.name}
+                    poster_path={item.poster_path}
+                    vote_average={item.vote_average}
+                    first_air_date={item.first_air_date}
+                    overview={item.overview}
+                  />
+                )
+              )}
             </div>
           </div>
         ) : (
@@ -80,5 +115,3 @@ function Shows() {
     </>
   );
 }
-
-export default Shows;

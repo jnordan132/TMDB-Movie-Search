@@ -14,7 +14,7 @@ export const getSavedShowIds = () => {
   return savedShowIds;
 };
 
-export const saveMovieIds = (movieIdArr) => {
+export const saveMovieIds = (movieIdArr: string | any[]) => {
   if (movieIdArr.length) {
     localStorage.setItem("saved_movies", JSON.stringify(movieIdArr));
   } else {
@@ -22,7 +22,7 @@ export const saveMovieIds = (movieIdArr) => {
   }
 };
 
-export const saveShowIds = (showIdArr) => {
+export const saveShowIds = (showIdArr: string | any[]) => {
   if (showIdArr.length) {
     localStorage.setItem("saved_shows", JSON.stringify(showIdArr));
   } else {
@@ -30,7 +30,7 @@ export const saveShowIds = (showIdArr) => {
   }
 };
 
-export const removeMovieId = (id) => {
+export const removeMovieId = (id: number) => {
   const savedMovieIds = localStorage.getItem("saved_movies")
     ? JSON.parse(localStorage.getItem("saved_movies"))
     : null;
@@ -40,14 +40,14 @@ export const removeMovieId = (id) => {
   }
 
   const updatedSavedMovieIds = savedMovieIds?.filter(
-    (savedMovieId) => savedMovieId !== id
+    (savedMovieId: any) => savedMovieId !== id
   );
   localStorage.setItem("saved_movies", JSON.stringify(updatedSavedMovieIds));
 
   return true;
 };
 
-export const removeShowId = (id) => {
+export const removeShowId = (id: number) => {
   const savedShowIds = localStorage.getItem("saved_shows")
     ? JSON.parse(localStorage.getItem("saved_shows"))
     : null;
@@ -57,7 +57,7 @@ export const removeShowId = (id) => {
   }
 
   const updatedSavedShowIds = savedShowIds?.filter(
-    (savedShowId) => savedShowId !== id
+    (savedShowId: any) => savedShowId !== id
   );
   localStorage.setItem("saved_shows", JSON.stringify(updatedSavedShowIds));
 

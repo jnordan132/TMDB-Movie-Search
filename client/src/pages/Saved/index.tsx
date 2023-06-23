@@ -1,21 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Spinner } from "react-bootstrap";
 import { useQuery, useMutation } from "@apollo/client";
-import Auth from "../../utils/auth";
-import { REMOVE_MOVIE, REMOVE_SHOW } from "../../utils/mutations";
-import { GET_USER } from "../../utils/queries";
-import { removeMovieId, removeShowId } from "../../utils/localStorage";
+import Auth from "../../utils/auth.tsx";
+import { REMOVE_MOVIE, REMOVE_SHOW } from "../../utils/mutations.tsx";
+import { GET_USER } from "../../utils/queries.tsx";
+import { removeMovieId, removeShowId } from "../../utils/localStorage.tsx";
 
-const SavedList = () => {
+interface Movie {
+  id: number;
+  poster_path: string;
+  title: string;
+  release_date: string;
+  vote_average: string;
+  overview: string;
+}
+
+interface Show {
+  id: number;
+  poster_path: string;
+  name: string;
+  first_air_date: string;
+  vote_average: string;
+  overview: string;
+}
+
+export default function SavedList() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const [removeMovie] = useMutation(REMOVE_MOVIE);
   const [removeShow] = useMutation(REMOVE_SHOW);
 
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState<any>({});
   const userDataLength = Object.keys(userData).length;
   const { data } = useQuery(GET_USER, {
-    variables: { userId: Auth.getProfile().data._id },
+    variables: { userId: (Auth.getProfile() as any).data._id },
   });
 
   useEffect(() => {
@@ -33,7 +51,7 @@ const SavedList = () => {
     getUserData();
   }, [data]);
 
-  const handleDeleteMovie = async (id) => {
+  const handleDeleteMovie = async (id: number) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
       return false;
@@ -41,7 +59,7 @@ const SavedList = () => {
     try {
       const response = await removeMovie({
         variables: {
-          userId: Auth.getProfile().data._id,
+          userId: (Auth.getProfile() as any).data._id,
           id: id,
         },
       });
@@ -57,7 +75,7 @@ const SavedList = () => {
     handleClose();
   };
 
-  const handleDeleteShow = async (id) => {
+  const handleDeleteShow = async (id: number) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
       return false;
@@ -65,7 +83,7 @@ const SavedList = () => {
     try {
       const response = await removeShow({
         variables: {
-          userId: Auth.getProfile().data._id,
+          userId: (Auth.getProfile() as any).data._id,
           id: id,
         },
       });
@@ -88,6 +106,7 @@ const SavedList = () => {
       </Spinner>
     );
   }
+
   return (
     <div className="container">
       <br />
@@ -98,8 +117,8 @@ const SavedList = () => {
       </h2>
       <br />
       <div className="grid">
-        {userData.savedMovies.map((movie) => {
-          const handleShow = (id) => {
+        {userData.savedMovies.map((movie: Movie) => {
+          const handleShow = (id: number) => {
             setShow(id);
           };
           return (
@@ -112,6 +131,7 @@ const SavedList = () => {
                   onClick={() => handleShow(movie.id)}
                   className="card-img-top"
                   src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
+                  alt={movie.title}
                 />
                 <Modal
                   key={movie.id}
@@ -127,9 +147,10 @@ const SavedList = () => {
                         src={
                           "https://image.tmdb.org/t/p/w500/" + movie.poster_path
                         }
+                        alt={movie.title}
                       />
                       <h3>{movie.title}</h3>
-                      <div class="center">
+                      <div className="center">
                         <h6>
                           <b>Release Date: {movie.release_date}</b>
                         </h6>
@@ -155,22 +176,23 @@ const SavedList = () => {
             </div>
           );
         })}
-        {userData.savedShows.map((shows) => {
-          const handleShow = (id) => {
+        {userData.savedShows.map((show: Show) => {
+          const handleShow = (id: number) => {
             setShow(id);
           };
           return (
-            <div key={shows.id} className="card text-center mb-3 beforeCard">
+            <div key={show.id} className="card text-center mb-3 beforeCard">
               <div className="card-body">
                 <img
-                  onClick={() => handleShow(shows.id)}
+                  onClick={() => handleShow(show.id)}
                   className="card-img-top"
-                  src={"https://image.tmdb.org/t/p/w500/" + shows.poster_path}
+                  src={"https://image.tmdb.org/t/p/w500/" + show.poster_path}
+                  alt={show.name}
                 />
                 <Modal
-                  key={shows.id}
+                  key={show.id}
                   className="modalCard"
-                  show={show === shows.id}
+                  show={show === show.id}
                   onHide={handleClose}
                 >
                   <Modal.Header closeButton></Modal.Header>
@@ -179,25 +201,26 @@ const SavedList = () => {
                       <img
                         className="card"
                         src={
-                          "https://image.tmdb.org/t/p/w500/" + shows.poster_path
+                          "https://image.tmdb.org/t/p/w500/" + show.poster_path
                         }
+                        alt={show.name}
                       />
-                      <h3>{shows.name}</h3>
-                      <div class="center">
+                      <h3>{show.name}</h3>
+                      <div className="center">
                         <h6>
-                          <b>Release Date: {shows.first_air_date}</b>
+                          <b>Release Date: {show.first_air_date}</b>
                         </h6>
                         <h6>
-                          <b>Rating: {shows.vote_average} / 10</b>
+                          <b>Rating: {show.vote_average} / 10</b>
                         </h6>
                       </div>
-                      <p>{shows.overview}</p>
+                      <p>{show.overview}</p>
                     </div>
                     <div>
                       <div className="buttonDiv">
                         <button
                           className="saveBtn"
-                          onClick={() => handleDeleteShow(shows.id)}
+                          onClick={() => handleDeleteShow(show.id)}
                         >
                           Remove
                         </button>
@@ -212,6 +235,4 @@ const SavedList = () => {
       </div>
     </div>
   );
-};
-
-export default SavedList;
+}

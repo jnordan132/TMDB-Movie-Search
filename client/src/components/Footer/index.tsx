@@ -1,6 +1,7 @@
+import * as React from "react";
 import { Nav, Navbar } from "react-bootstrap";
 
-function Footer() {
+export default function Footer() {
   return (
     <Navbar expand="lg" className="footer">
       <div className="footerContent">
@@ -18,5 +19,3 @@ function Footer() {
     </Navbar>
   );
 }
-
-export default Footer;

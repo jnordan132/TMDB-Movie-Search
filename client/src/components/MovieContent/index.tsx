@@ -1,64 +1,72 @@
 import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
-import Auth from "../../utils/auth";
-import { ADD_SHOW } from "../../utils/mutations";
-import { saveShowIds, getSavedShowIds } from "../../utils/localStorage";
+import Auth from "../../utils/auth.tsx";
+import { ADD_MOVIE } from "../../utils/mutations.tsx";
+import { saveMovieIds, getSavedMovieIds } from "../../utils/localStorage.tsx";
+interface MovieContentProps {
+  id: number;
+  title: string;
+  poster_path: string;
+  vote_average: number;
+  release_date: number;
+  overview: string;
+}
 
-const ShowContent = ({
+export default function MovieContent({
   id,
-  name,
+  title,
   poster_path,
   vote_average,
-  first_air_date,
+  release_date,
   overview,
-}) => {
+}: MovieContentProps) {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
-  const [addShow] = useMutation(ADD_SHOW);
-  const [savedShowIds, setSavedShowIds] = useState(getSavedShowIds() || []);
+  const [addMovie] = useMutation(ADD_MOVIE);
+  const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds() || []);
 
   useEffect(() => {
-    saveShowIds(savedShowIds);
-  }, [savedShowIds]);
+    saveMovieIds(savedMovieIds);
+  }, [savedMovieIds]);
 
-  const handleSaveShow = async () => {
-    if (savedShowIds?.some((savedShowId) => savedShowId === id)) {
+  const handleSaveMovie = async () => {
+    if (savedMovieIds?.some((savedMovieId: any) => savedMovieId === id)) {
       return;
     }
-    let currentSavedShowIds = getSavedShowIds() || [];
+    let currentSavedMovieIds = getSavedMovieIds() || [];
 
-    currentSavedShowIds.push(id);
+    currentSavedMovieIds.push(id);
 
-    saveShowIds(currentSavedShowIds);
-    const showToSave = {
+    saveMovieIds(currentSavedMovieIds);
+    const movieToSave = {
       id,
-      name,
+      title,
       poster_path,
       vote_average,
-      first_air_date,
+      release_date,
       overview,
     };
-    console.log(showToSave);
+    console.log(movieToSave);
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
       return false;
     }
     try {
-      await addShow({
+      await addMovie({
         variables: {
-          userId: Auth.getProfile().data._id,
+          userId: (Auth.getProfile() as any).data._id, // Type assertion
           id,
-          name,
+          title,
           poster_path,
           vote_average,
-          first_air_date,
+          release_date,
           overview,
         },
       });
-      setSavedShowIds(currentSavedShowIds);
-      saveShowIds(currentSavedShowIds);
+      setSavedMovieIds(currentSavedMovieIds);
+      saveMovieIds(currentSavedMovieIds);
     } catch (err) {
       console.error(err);
     }
@@ -83,11 +91,10 @@ const ShowContent = ({
                   className="card"
                   src={"https://image.tmdb.org/t/p/w500/" + poster_path}
                 />
-                <h3>{name}</h3>
-
-                <div class="center">
+                <h3>{title}</h3>
+                <div className="center">
                   <h6>
-                    <b>Release Date: {first_air_date}</b>
+                    <b>Release Date: {release_date}</b>
                   </h6>
                   <h6>
                     <b>Rating: {vote_average} / 10</b>
@@ -98,25 +105,25 @@ const ShowContent = ({
               <div>
                 {Auth.loggedIn() ? (
                   <div className="buttonDiv">
-                    <br />
                     <button
-                      disabled={savedShowIds?.some(
-                        (savedShowId) => savedShowId === id
+                      disabled={savedMovieIds?.some(
+                        (savedMovieId: any) => savedMovieId === id
                       )}
                       className="saveBtn"
                       onClick={() => {
-                        handleSaveShow(id);
+                        handleSaveMovie();
                         handleClose();
                       }}
                     >
-                      {savedShowIds?.some((savedShowId) => savedShowId === id)
+                      {savedMovieIds?.some(
+                        (savedMovieId: any) => savedMovieId === id
+                      )
                         ? "Saved"
                         : "Save"}
                     </button>
                   </div>
                 ) : (
                   <div>
-                    <br />
                     <p className="cantSave">
                       <a href="/login">Login</a> or <a href="/signup">Signup</a>{" "}
                       to save this
@@ -130,6 +137,4 @@ const ShowContent = ({
       </div>
     );
   }
-};
-
-export default ShowContent;
+}

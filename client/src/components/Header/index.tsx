@@ -1,13 +1,14 @@
-import Auth from "../../utils/auth";
+import * as React from "react";
+import Auth from "../../utils/auth.tsx";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { clearMovieId } from "../../utils/localStorage";
+import { clearMovieId } from "../../utils/localStorage.tsx";
 
 function Header() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="grey" variant="dark">
       <Navbar.Brand href="/">MovieWiki</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
+      <Navbar.Collapse role="responsive-navbar-nav" id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link href="/movies">Movies</Nav.Link>
           <Nav.Link href="/shows">TV Shows</Nav.Link>

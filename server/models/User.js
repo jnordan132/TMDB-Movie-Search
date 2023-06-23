@@ -5,26 +5,21 @@ const movieSchema = new Schema(
   {
     id: {
       type: Number,
-      // required: true,
     },
     overview: {
       type: String,
-      // required: true,
     },
     poster_path: {
       type: String,
     },
     title: {
       type: String,
-      // required: true,
     },
     release_date: {
       type: String,
-      // required: true,
     },
     vote_average: {
       type: Number,
-      // required: true,
     },
   },
   {
@@ -39,26 +34,21 @@ const showSchema = new Schema(
   {
     id: {
       type: Number,
-      // required: true,
     },
     overview: {
       type: String,
-      // required: true,
     },
     poster_path: {
       type: String,
     },
     name: {
       type: String,
-      // required: true,
     },
     first_air_date: {
       type: String,
-      // required: true,
     },
     vote_average: {
       type: Number,
-      // required: true,
     },
   },
   {

@@ -1,13 +1,14 @@
+import * as React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Shows from "./pages/Shows";
-import Movies from "./pages/Movies";
-import SavedList from "./pages/Saved";
-import Footer from "./components/Footer";
+import Header from "./components/Header/index.tsx";
+import Home from "./pages/Home/index.tsx";
+import Login from "./pages/Login/index.tsx";
+import Signup from "./pages/Signup/index.tsx";
+import Shows from "./pages/Shows/index.tsx";
+import Movies from "./pages/Movies/index.tsx";
+import SavedList from "./pages/Saved/index.tsx";
+import Footer from "./components/Footer/index.tsx";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 const client = new ApolloClient({
