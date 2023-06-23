@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import Auth from "../../utils/auth.tsx";
 import { ADD_MOVIE } from "../../utils/mutations.tsx";
 import { saveMovieIds, getSavedMovieIds } from "../../utils/localStorage.tsx";
+
 interface MovieContentProps {
   id: number;
   title: string;
